@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vishakha | Cyber Security Learner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        body {
+            background: #050816;
+            color: #e5e7eb;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Layout */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(5, 8, 22, 0.92);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a {
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -0.25rem;
+            width: 0;
+            height: 2px;
+            background: #38bdf8;
+            transition: width 0.2s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 4rem 0 3rem;
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-size: clamp(2.2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title span {
+            color: #38bdf8;
+        }
+
+        .hero-subtitle {
+            color: #9ca3af;
+            font-size: 0.98rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            color: #cbd5f5;
+            margin-right: 0.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-cta {
+            margin-top: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.6rem 1.4rem;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #38bdf8, #6366f1);
+            color: #0b1120;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            border-color: #4b5563;
+            background: transparent;
+            color: #e5e7eb;
+        }
+
+        .btn-outline:hover {
+            border-color: #9ca3af;
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        .hero-card {
+            border-radius: 1.5rem;
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            padding: 1.75rem;
+            background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.07), transparent 55%),
+                        radial-gradient(circle at bottom right, rgba(129, 140, 248, 0.08), transparent 55%),
+                        #020617;
+            box-shadow: 0 18px 45px rgba(15, 23, 42, 0.9);
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.25rem 0.7rem;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.8);
+            font-size: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .status-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 999px;
+            background: #22c55e;
+            box-shadow: 0 0 10px rgba(34, 197, 94, 0.7);
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+            margin-top: 1.3rem;
+        }
+
+        .stat-card {
+            padding: 0.75rem;
+            border-radius: 0.9rem;
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #9ca3af;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-value {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        /* Sections */
+        section {
+            padding: 2.5rem 0;
+        }
+
+        section h2 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        section p.section-intro {
+            color: #9ca3af;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .grid {
+            display: grid;
+            gap: 1.2rem;
+        }
+
+        .card {
+            border-radius: 1rem;
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            background: rgba(15, 23, 42, 0.9);
+            padding: 1.25rem;
+        }
+
+        .card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .card small {
+            color: #9ca3af;
+            font-size: 0.8rem;
+        }
+
+        .pill-row {
+            margin-top: 0.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .pill {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.55rem;
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            color: #cbd5f5;
+        }
+
+        /* Logs / Blog */
+        .log-date {
+            font-size: 0.8rem;
+            color: #9ca3af;
+            margin-bottom: 0.3rem;
+        }
+
+        .log-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+
+        .log-body {
+            font-size: 0.9rem;
+            color: #e5e7eb;
+        }
+
+        .log-tags {
+            margin-top: 0.7rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        /* Contact */
+        .contact-list {
+            list-style: none;
+            font-size: 0.9rem;
+        }
+
+        .contact-list li + li {
+            margin-top: 0.3rem;
+        }
+
+        .contact-label {
+            color: #9ca3af;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        footer {
+            border-top: 1px solid rgba(148, 163, 184, 0.25);
+            padding: 1.2rem 0 1.7rem;
+            font-size: 0.8rem;
+            color: #9ca3af;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 800px) {
+            .hero {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .nav-links {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .hero {
+                padding-top: 2.5rem;
+            }
+
+            .hero-card {
+                margin-top: -0.5rem;
+            }
+
+            section {
+                padding: 2rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <nav>
+            <div class="logo">Vishakha<span>.cyber</span></div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#logs">Logs</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- HERO -->
+    <section class="hero container">
+        <div>
+            <div class="tag">Cyber Security Learner</div>
+            <div class="tag">Ethical Hacking Enthusiast</div>
+
+            <h1 class="hero-title">
+                Hi, I'm <span>Vishakha</span> — exploring the world of Cyber Security.
+            </h1>
+
+            <p class="hero-subtitle">
+                I’m a student building strong foundations in cyber security, ethical hacking,
+                and network defense. This portfolio tracks my learning journey, projects,
+                and daily security logs.
+            </p>
+
+            <div class="hero-cta">
+                <a href="#logs" class="btn btn-primary">Read my first log</a>
+                <a href="#projects" class="btn btn-outline">View projects</a>
+            </div>
+        </div>
+
+        <div class="hero-card">
+            <div class="status-pill">
+                <span class="status-dot"></span>
+                Currently learning: Web Application Security
+            </div>
+
+            <p style="font-size:0.9rem; color:#e5e7eb;">
+                I’m focusing on understanding how attacks like SQL Injection, XSS, and
+                brute force work — and how to defend against them in real systems.
+            </p>
+
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Focused Areas</div>
+                    <div class="stat-value">Web Security, Networking, Linux</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Learning Style</div>
+                    <div class="stat-value">Hands-on labs & notes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Goal</div>
+                    <div class="stat-value">Cyber Security Analyst</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Status</div>
+                    <div class="stat-value">Beginner → Intermediate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p class="section-intro">
+                I'm Vishakha, a student with a strong interest in cyber security and ethical hacking.
+                I enjoy understanding how systems can be attacked and, more importantly,
+                how to protect them. I’m building my skills step by step through courses,
+                labs, capture the flag (CTF) challenges, and self-study.
+            </p>
+            <p class="section-intro">
+                My current focus areas are:
+                learning Linux commands, understanding computer networks,
+                exploring different types of cyber attacks, and practicing secure coding techniques.
+                This website will grow with me as I learn, experiment, and share my logs.
+            </p>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+        <div class="container">
+            <h2>Skills & Tools (Learning)</h2>
+            <p class="section-intro">
+                These are the core technologies and topics I’m currently learning and practicing.
+            </p>
+
+            <div class="grid">
+                <div class="card">
+                    <h3>Cyber Security Basics</h3>
+                    <small>Foundations</small>
+                    <p style="font-size:0.9rem; margin-top:0.4rem;">
+                        CIA triad (Confidentiality, Integrity, Availability),
+                        types of attacks, security controls, and basic risk concepts.
+                    </p>
+                    <div class="pill-row">
+                        <span class="pill">CIA Triad</span>
+                        <span class="pill">Threats & Vulnerabilities</span>
+                        <span class="pill">Security Controls</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Networking & Systems</h3>
+                    <small>Under the hood</small>
+                    <p style="font-size:0.9rem; margin-top:0.4rem;">
+                        Understanding how data moves across networks and how systems work:
+                        ports, protocols, IP addresses, OSI model basics.
+                    </p>
+                    <div class="pill-row">
+                        <span class="pill">TCP/IP</span>
+                        <span class="pill">Ports & Protocols</span>
+                        <span class="pill">OSI Model</span>
+                        <span class="pill">Firewalls</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Web Application Security</h3>
+                    <small>Current focus</small>
+                    <p style="font-size:0.9rem; margin-top:0.4rem;">
+                        Learning how common web attacks work and how to prevent them,
+                        using intentionally vulnerable labs and demo websites.
+                    </p>
+                    <div class="pill-row">
+                        <span class="pill">SQL Injection</span>
+                        <span class="pill">XSS</span>
+                        <span class="pill">Weak Authentication</span>
+                        <span class="pill">Input Validation</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Tools & Platforms</h3>
+                    <small>Hands-on practice</small>
+                    <p style="font-size:0.9rem; margin-top:0.4rem;">
+                        Getting comfortable with basic tools used in cyber security.
+                    </p>
+                    <div class="pill-row">
+                        <span class="pill">Linux Terminal</span>
+                        <span class="pill">Burp Suite (learning)</span>
+                        <span class="pill">Wireshark (learning)</span>
+                        <span class="pill">Virtual Machines</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <div class="container">
+            <h2>Practice Projects</h2>
+            <p class="section-intro">
+                These are simple practice-based activities I’m using to apply my knowledge.
+                As I grow, I’ll add more detailed projects and reports here.
+            </p>
+
+            <div class="grid">
+                <div class="card">
+                    <h3>Basic Website Security Check</h3>
+                    <small>Learning project</small>
+                    <p style="font-size:0.9rem; margin-top:0.4rem;">
+                        Performed a basic security review of a demo website. Tried to identify
+                        simple issues like missing input validation, weak passwords, and
+                        visible error messages. Documented what I found and how it might be fixed.
+                    </p>
+                    <div class="pill-row">
+                        <span class="pill">Web Security</span>
+                        <span class="pill">Reporting</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Linux & Commands Practice</h3>
+                    <small>Daily practice</small>
+                    <p style="font-size:0.9rem; margin-top:0.4rem;">
+                        Practicing basic Linux commands for file management, permissions,
+                        processes, and networking. This helps me feel more comfortable in
+                        a real cyber security environment.
+                    </p>
+                    <div class="pill-row">
+                        <span class="pill">Linux</span>
+                        <span class="pill">Shell</span>
+                        <span class="pill">Permissions</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LEARNING LOGS -->
+    <section id="logs">
+        <div class="container">
+            <h2>Learning Logs</h2>
+            <p class="section-intro">
+                This section is my personal space to record what I’m learning in cyber security —
+                day by day or topic by topic. Below is my first log.
+            </p>
+
+            <div class="card">
+                <div class="log-date">Log #1 • My First Cyber Security Post</div>
+                <div class="log-title">Starting My Cyber Security Journey</div>
+                <div class="log-body">
+                    <p>
+                        Today I’m officially starting my cyber security learning log.  
+                        My goal is to build a strong foundation step by step and track my progress here.
+                    </p>
+                    <br>
+                    <p>
+                        In this phase, I’m focusing on understanding the basics:
+                        what cyber security means, different types of attacks,
+                        and how real systems can be protected. I’ve started revising:
+                    </p>
+                    <ul style="margin-top:0.4rem; margin-left:1.2rem; font-size:0.9rem;">
+                        <li>The CIA triad and why it is important.</li>
+                        <li>Common attack types like phishing, malware, and brute force.</li>
+                        <li>Basic networking concepts: IP, ports, protocols.</li>
+                    </ul>
+                    <br>
+                    <p>
+                        I also practiced a few Linux commands and explored a test website
+                        to think like both an attacker and a defender.
+                        In future logs, I’ll write about specific topics like SQL injection,
+                        XSS, and simple security tools that I’m learning.
+                    </p>
+                </div>
+
+                <div class="log-tags">
+                    <span class="pill">#Log1</span>
+                    <span class="pill">#CyberSecurityJourney</span>
+                    <span class="pill">#Beginner</span>
+                </div>
+            </div>
+
+            <p style="margin-top:1rem; font-size:0.85rem; color:#9ca3af;">
+                Tip for future me: whenever I learn something new (a tool, concept, or lab),
+                I will add a new log here with date, topic, and key learnings.
+            </p>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="container">
+            <h2>Contact</h2>
+            <p class="section-intro">
+                Want to connect with me for cyber security learning, projects, or opportunities?
+                You can reach me using the details below (replace with your real information).
+            </p>
+
+            <div class="card">
+                <ul class="contact-list">
+                    <li>
+                        <div class="contact-label">Email</div>
+                        <div>vishugediya26@gmail.com</div>
+                    </li>
+                    <li>
+                        <div class="contact-label">LinkedIn</div>
+                        <div><a href="#" target="_blank">https://www.linkedin.com/in/vishakha-gediya-57ab41270/</a></div>
+                    </li>
+                    <li>
+                        <div class="contact-label">GitHub</div>
+                        <div><a href="#" target="_blank">github.com/vishugediya26</a></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        © <span id="year"></span> Vishakha • Cyber Security Learner
+    </div>
+</footer>
+
+<script>
+    // Just to auto-update the year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
